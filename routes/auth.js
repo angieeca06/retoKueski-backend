@@ -20,7 +20,7 @@ router.post('/register', async (req, res) => {
 
 	//CREATE NEW USER
 	const user = new User ({
-		name: req.body.name,
+
 		email: req.body.email,
 		password: hashPassword
 	});
@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
 	if (error) return res.status(400).send(error.details[0].message);
 
 	// CHECK IF EMAIL ALREADY EXISTS
-	const user = await User.findOne({email: req.body.email});
+	const user = await User.findOne({ email: req.body.email });
 	if (!user) return res.status(400).send('Email or password is wrong');
 
 	//PASSWORD IS CORRECT
