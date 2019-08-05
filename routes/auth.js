@@ -19,11 +19,11 @@ router.post('/register', async (req, res) => {
 	const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 	//CREATE NEW USER
-		const user = new User ({
 
-			email: req.body.email,
-			password: hashPassword
-		});
+	const user = new User ({
+		email: req.body.email,
+		password: hashPassword
+	});
 
 	try {
 		const savedUser = await user.save();
@@ -58,4 +58,3 @@ router.post('/login', async (req, res) => {
 	});
 
 module.exports = router;
-
