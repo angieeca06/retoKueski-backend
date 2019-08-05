@@ -27,4 +27,28 @@ router.get('/:id',(req,res)=>{
   .catch(error=>res.status(500).json({error}));
 });
 
+//delete
+
+router.delete('/:id', (req,res)=>{
+  Goal.findById(req.params.id)
+  .then()
+  .then(goal => goal.remove())
+  .then(()=>Goal.find())
+
+  .then(goals => res.json(goals))
+  .catch(error=> res.status(500).json({error}))
+
+});
+//edit
+
+router.put('/:id',(req,res, next)=>{
+  Goal.findByIdAndUpdate({_id:req.params.id},req.body)
+  .then(()=>{
+    Goal.findOne({_id:req.params.id}).then((goal)=>{
+      res.send(goal);
+    });
+  })
+  .catch(next);
+});
+
 module.exports = router;
