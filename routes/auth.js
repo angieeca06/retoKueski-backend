@@ -19,11 +19,11 @@ router.post('/register', async (req, res) => {
 	const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 	//CREATE NEW USER
-	const user = new User ({
+		const user = new User ({
 
-		email: req.body.email,
-		password: hashPassword
-	});
+			email: req.body.email,
+			password: hashPassword
+		});
 
 	try {
 		const savedUser = await user.save();
@@ -52,7 +52,8 @@ router.post('/login', async (req, res) => {
 
 	//CREATE AND ASSIGN TOKEN
 	const token = jwt.sign( {_id: user._id }, process.env.TOKEN_SECRET);
-	res.header('auth-token', token).send(token);
+	res.header('auth-token', token).json(token);
+
 
 	});
 
