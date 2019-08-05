@@ -20,7 +20,6 @@ router.post('/register', async (req, res) => {
 
 	//CREATE NEW USER
 	const user = new User ({
-
 		email: req.body.email,
 		password: hashPassword
 	});
@@ -57,4 +56,3 @@ router.post('/login', async (req, res) => {
 	});
 
 module.exports = router;
-
