@@ -13,7 +13,8 @@ router.post('/',(req,res)=>{
   const newGoal = new Goal({
     title:req.body.title,
     motive:req.body.motive,
-    date:req.body.date
+    date:req.body.date,
+    id:req.body._id
   });
 
   newGoal.save()

@@ -5,7 +5,8 @@ const Schema= mongoose.Schema;
 const GoalSchema = new Schema({
   title:{type:String},
   motive:{type:String},
-  date:{type:Date}
+  date:{type:Date},
+  id:{type:String}
 
 
 });
